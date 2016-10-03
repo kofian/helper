@@ -1,0 +1,26 @@
+<% if notice %>
+<p id="notice"><%= notice %></p>
+<% end %>
+<h1> Be a Helping Hand </h1>
+
+<% cache ['charity', Project.latest] do %>
+
+<% @projects.each do |project| %>
+
+<% cache ['entry', project] do %>
+<div class="entry">
+<%= image_tag(project.image_url) %>
+<h3><%= project.title %></h3>
+<%= sanitize(project.description) %>
+<div class="estimate_line">
+<span class="estimate">Estimate: <%= number_to_currency(project.estimate) %></span>
+
+<%= form_tag pledges_path(project_id: project), method: "post", remote: true do %>
+<%= text_field_tag 'amount',nil,placeholder:'0.00', id: 'new-todo' %>
+<%= submit_tag 'Make Pledge' %>
+<% end %>
+</div>
+</div>
+<% end %>
+<% end %>
+<% end %>

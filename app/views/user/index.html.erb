@@ -1,0 +1,17 @@
+<h1> Welcome <%= current_user.name %> </h1>
+
+It's <%= Time.now %>
+
+<p>We have <%= pluralize(@total_donations, "donation") %></p>
+<p>You have have <%= current_user.pledges.count %> pledges in cart</p>
+<div>
+<% current_user.pledges.each do |user|%>
+<h3> Project Name: <%= user.project.title %></h3>
+<h3> Amount Pledged: <%= user.amount %></h3>
+<%= button_to "Make Donation", new_donation_path, method: :get %>
+<%if user.donation %> You made donation with <%=user.donation.pay_type %> <h3>at: <%= user.donation.created_at %></h3>
+<% end %>
+
+<%= user.cart_id %>
+<% end %>
+</div>

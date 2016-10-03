@@ -1,0 +1,16 @@
+
+<h2> Your Thanks Giving Pledge </h2>
+
+ <table>
+
+  <%= render (cart.pledges) %>
+
+ <tr class= "total_line" >
+ <td colspan= "2" > Total </td>
+ <td class= "total_cell" > <%= number_to_currency(cart.total_estimate) %> </td>
+</tr>
+</table>
+
+<%= button_to "Make Donation", new_donation_path,method: :get %>
+
+<%= button_to 'Empty Cart', cart, method: :delete, data: { confirm: 'Are you sure?' } %>

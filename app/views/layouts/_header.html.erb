@@ -1,0 +1,44 @@
+<header class="navbar navbar-fixed-top navbar-default">
+ <div class="container">
+<div id="logo">
+<%= image_tag("logo.png") %>
+</div>
+<div class="nav_item">
+<%= link_to (@page_title || "Thanks Giving"), charity_path, class: "btn btn-lg btn-success" %>
+</div>
+<div class="nav_item">
+ <%= link_to "Projects", projects_path, class: "btn btn-default btn-warning" %>
+</div>
+<% if user_signed_in? %>
+<ul class="nav_item">
+ <li class="dropdown">
+  <%= link_to '#', class: "btn btn-default btn-xs btn-danger dropdown-toggle", "data-toggle" => "dropdown" do %>
+   <%= current_user.name %> <b class="caret"></b>
+ <% end %>
+
+ <ul class='dropdown-menu'>
+   <li><%= link_to 'Create a new Project', new_project_path %></li>
+  <li><%= link_to 'Profile', edit_user_registration_path %></li>
+  <li class="divider"></li>
+  <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
+ </ul>
+ </li>
+ </ul>
+ <% else %>
+ <ul class="nav_item">
+  <li class="dropdown">
+   <%= link_to '#', class: "btn btn-default btn-info dropdown-toggle", "data-toggle" => "dropdown" do %>
+     Guest User? <b class="caret"></b>
+   <% end %>
+  <ul class='dropdown-menu'>
+  <li><%= link_to 'Log In', new_user_session_path %></li>
+   <li class="divider"></li>
+  <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+  </ul>
+  </li>
+ </ul>
+<% end %>
+
+
+</div>
+</header>

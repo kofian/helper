@@ -1,0 +1,42 @@
+
+<%= render 'shared/page_title', title: "All Projects" %>
+
+<%#= will_paginate %>
+
+ <% @projects.each do |project| %>
+  <div class="row projects">
+      
+    <div class="col-md-2">
+    <section class="project_info center">
+       <%= image_tag(project.image_url, class: 'list_image', size: 50) %>
+       <h5><%= project.title %></h5>
+     </section>
+    </div>
+
+    <div class="col-md-6 well">
+       <h4><%= link_to project.title, project_path(project) %></h4> 
+       <p><%= truncate(strip_tags(project.description), length: 80) %></p>
+        <p>
+        <span class='quiet'><small>Created &nbsp&nbsp<%= time_ago_in_words(project.created_at) %> ago &nbsp&nbsp and &nbsp&nbsp Updated <%= time_ago_in_words(project.updated_at) %> ago</small></span>
+        </p>
+        <div class="pull-right">
+          <%= link_to like_project_path(project, like: true), method: :post do %>
+            <i class="glyphicon glyphicon-thumbs-up"></i>&nbsp <%= project.thumbs_up_total %>
+          <% end %>&nbsp&nbsp&nbsp&nbsp
+          <%= link_to like_project_path(project, like: false), method: :post do %>
+           <i class="glyphicon glyphicon-thumbs-down"></i>&nbsp <%= project.thumbs_down_total %>
+          <% end %>
+        </div>
+      </div>
+
+     <div class="col-md-4">
+      <%#= image_tag(project.picture.url, size: "250x150", class: "gavatar") if project.picture? %>
+     </div>
+
+
+    </div>
+   <hr/> 
+   <% end %>
+
+<%#= will_paginate %>
+

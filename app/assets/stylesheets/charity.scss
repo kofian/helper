@@ -1,0 +1,98 @@
+// Place all the styles related to the Charity controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+ /* An entry in the charity catalog */
+ .entry {
+
+  div.estimate_line {
+   margin-left: 10px;
+   margin-top: 0.5em;
+   margin-bottom: 0.8em;
+
+   form, div {
+    display: inline;
+   } 
+  }
+  .estimate {
+    color: #44a;
+    font-weight: bold;
+    margin-right: 3em;
+  }
+  .media_image {
+     max-width: 200px;
+     max-height: 250px;
+   }
+ }
+
+.jumbotron {
+   padding: 20px;
+  p {
+   font-size: 16px;
+   text-align: justify;
+  }
+ h1 {
+  font-size: 30px;
+  color: #000;
+  font-weight: 500px;
+ }
+ .estimate {
+ color: #44a;
+ font-weight: bold;
+ margin-right: 3em;
+ }
+}
+.sesfield {
+  input {
+   width: 100%;
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+
+  .duches {
+   margin-top: 25px;
+ }
+
+ .jumbotron {
+ 
+  .media-body {
+    width: 100%;
+    float: left;
+   }
+   h1 {
+    font-size: 18px;
+    font-weight: 200px;
+   }
+   p {
+    font-size: 12px;
+  }
+ }
+ .panel-body {
+   h2 {
+    font-size: 1.0em;
+    letter-spacing: -1px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  h3 {
+   font-size: 0.8em;
+   margin-bottom: 30px;
+   text-align: center;
+   font-weight: normal;
+   color: #777;
+  }
+  p {
+   font-size: 12px;
+  }
+ }
+ .panel-heading {
+   h3 {
+     font-size: 18px;
+   }
+ }
+
+}
+

@@ -1,0 +1,10 @@
+<% if pledge == @current_pledge %>
+ <tr id= "current_pledge" >
+ <% else %>
+ <tr>
+<% end %>
+
+ <td> <%= pledge.interval %>&times; </td>
+ <td> <%= pledge.project.title %> </td>
+ <td class= "pledge_estimate" > <%= number_to_currency(pledge.total_amount) %> </td>
+ </tr>

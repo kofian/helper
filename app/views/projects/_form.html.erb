@@ -1,0 +1,26 @@
+<%= render 'shared/errors', obj: @project %>
+
+  <div class="row projects">
+   <div class="well col-md-8 col-md-offset-2">    
+     <%= form_for(@project) do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  
+  
+    <%= f.label :description %>
+    <%= f.text_area :description, rows: 10 %>
+  
+  
+    <%= f.label :image_url %>
+    <%= f.text_field :image_url %>
+  
+  
+    <%= f.label :estimate %>
+    <%= f.text_field :estimate %>
+  
+  
+    <%= f.submit(@project.new_record? ? 'Create Project' : 'Edit Project', class: "btn btn-success") %>
+  
+    <% end %>
+   </div>
+  </div>
