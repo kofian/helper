@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20161002184858) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -46,10 +49,10 @@ ActiveRecord::Schema.define(version: 20161002184858) do
     t.integer  "user_id"
   end
 
-  add_index "pledges", ["cart_id"], name: "index_pledges_on_cart_id"
-  add_index "pledges", ["donation_id"], name: "index_pledges_on_donation_id"
-  add_index "pledges", ["project_id"], name: "index_pledges_on_project_id"
-  add_index "pledges", ["user_id"], name: "index_pledges_on_user_id"
+  add_index "pledges", ["cart_id"], name: "index_pledges_on_cart_id", using: :btree
+  add_index "pledges", ["donation_id"], name: "index_pledges_on_donation_id", using: :btree
+  add_index "pledges", ["project_id"], name: "index_pledges_on_project_id", using: :btree
+  add_index "pledges", ["user_id"], name: "index_pledges_on_user_id", using: :btree
 
   create_table "projects", force: :cascade do |t|
     t.string   "title"
@@ -61,7 +64,7 @@ ActiveRecord::Schema.define(version: 20161002184858) do
     t.integer  "user_id"
   end
 
-  add_index "projects", ["user_id"], name: "index_projects_on_user_id"
+  add_index "projects", ["user_id"], name: "index_projects_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
@@ -82,7 +85,12 @@ ActiveRecord::Schema.define(version: 20161002184858) do
     t.boolean  "featured",               default: false
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "pledges", "carts"
+  add_foreign_key "pledges", "donations"
+  add_foreign_key "pledges", "projects"
+  add_foreign_key "pledges", "users"
+  add_foreign_key "projects", "users"
 end
