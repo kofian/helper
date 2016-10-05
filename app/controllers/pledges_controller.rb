@@ -20,10 +20,6 @@ class PledgesController < ApplicationController
 
   # GET /pledges/new
   def new
-    #if current_user.nil?
-     #redirect_to new_user_session_path, notice: "You need to sign in first"
-    #return
-    #end
     @pledge = Pledge.new
   end
 
@@ -34,11 +30,6 @@ class PledgesController < ApplicationController
   # POST /pledges
   # POST /pledges.json
   def create
-    #if current_user.nil?
-     #redirect_to new_user_session_path, notice: "You need to sign in first"
-    #return
-    #end
-
     project = Project.find(params[:project_id])
     @pledge = @cart.add_project(project.id)
     @pledge.amount += params[:amount].to_f

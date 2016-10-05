@@ -1,0 +1,9 @@
+<%= content_tag "div", h(flash[:danger]),
+:class => "danger", :id => "danger" if flash[:danger] %>
+<%= content_tag "div", h(flash[:notice]),
+:class => "notice", :id => "notice" if flash[:notice] %>
+<%= content_tag "div", h(flash[:success]),
+:class => "success", :id => "success" if flash[:success] %>
+<%= content_tag "div", h(flash[:alert]),
+:class => "alert", :id => "alert" if flash[:alert] %>
+

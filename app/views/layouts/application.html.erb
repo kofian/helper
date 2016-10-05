@@ -11,18 +11,17 @@
 
 <%= render 'layouts/header' %>
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
 
-<div class="container">
+
+<div class="container main1">
+
+<%= render 'layouts/flashes' %>
+
 <%= yield %>
 
-<div class="footer center">
-<p>&copy; HelpingHands 2016 &spades; </p>
-</div>
 
+<%= render 'layouts/footer' %>
 </div>
-
 
 </body>
 </html>

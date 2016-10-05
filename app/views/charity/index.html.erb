@@ -1,5 +1,7 @@
 <div class="row duches">
 
+<div class="col-md-1">
+</div>
  <div class="center jumbotron col-md-10"> <!--jumbotron-->
     <!--<h2> The featured charity project needing your help</h2>-->
      <div class="container"> <!--entry removed entry class-->
@@ -25,20 +27,6 @@
     </div> <!--entry-->
   </div> <!--jumbotron-->
 
-<div class="col-md-2 panel panel-default carts">
- <% if @cart %>
- <%= hidden_div_if(@cart.pledges.empty?, id: 'cart') do %>
- <%= render @cart %>
- <% end %>
-  
- <% end %>
-<ul class="panel panel-default">
-<li><a href="http://localhost:3000/">Home</a></li>
-<li> <a href= "http://www..../faq" > Questions </a> </li>
-<li> <a href= "http://www..../news" > News </a> </li>
-<li> <a href= "http://www..../contact" > Contact </a> </li>
-</ul>
-</div>
 
 
 

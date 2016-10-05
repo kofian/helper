@@ -2,7 +2,7 @@
 
   <div class="row projects">
    <div class="well col-md-8 col-md-offset-2">    
-     <%= form_for(@project) do |f| %>
+     <%= form_for(@project, html: {muultipart: true}) do |f| %>
     <%= f.label :title %>
     <%= f.text_field :title %>
   
@@ -11,16 +11,25 @@
     <%= f.text_area :description, rows: 10 %>
   
   
-    <%= f.label :image_url %>
-    <%= f.text_field :image_url %>
-  
-  
     <%= f.label :estimate %>
     <%= f.text_field :estimate %>
   
-  
+    <span class="picture">
+     <%= f.file_field :picture, accept: 'image/jpeg, image/gif, image/png' %>
+    </span>
+
     <%= f.submit(@project.new_record? ? 'Create Project' : 'Edit Project', class: "btn btn-success") %>
   
     <% end %>
    </div>
   </div>
+
+   <script type = "text/javascript">
+    $('#project_picture').bind('change', function() {
+      size_in_megabytes = this.files[0].size/1024/1024;
+      if (size_in_megabytes > 5) {
+       alert('Maximum file size is 5mb. Please choose a smaller file');
+      }
+    });
+  </script>
+

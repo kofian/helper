@@ -1,0 +1,11 @@
+I"ÿ(function() {
+  $(document).on('click', '[data-dismiss=modal], .modal-scrollable', function() {
+    return $('.modal-body-content').empty();
+  });
+
+  $(document).on('click', '#MmyModal', function(e) {
+    return e.stopPropagation();
+  });
+
+}).call(this);
+:ET

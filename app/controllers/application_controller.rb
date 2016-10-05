@@ -36,7 +36,9 @@ class ApplicationController < ActionController::Base
 
     def invalid_path
       logger.error "Attempt to access invalid path #{params[:id]}"
-      redirect_to charity_url, notice: 'Invalid path'
+      #redirect_to charity_url, notice: 'Invalid path'
+      flash[:danger] = "You are trying to access invalid path"
+      redirect_to charity_url
     end
 
 

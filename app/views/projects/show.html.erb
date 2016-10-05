@@ -12,12 +12,12 @@
  </div>
 
    <div class="container entry"> <!--entry-->
-      <div class="media well well-lg"> <!--media-->
-        <div class="media-left"><!--media-left-->
-         <%= image_tag(@project.image_url, class: "media_image") %>
+    <div class="wells wells-lg"> <!--wells-->
+      <div class="row"> <!--media-->
+        <div class="col-md-4"><!--media-left-->
+         <%= image_tag(@project.picture_url, size: "250x250", class: "media_image") if @project.picture? %>
         </div> <!--media-left-->
-        <div class="media-body"> <!--media-body-->
-         <h1> <%= @project.title %> </h1>
+        <div class="col-md-7"> <!--media-body-->
          <%= sanitize(@project.description) %>
          <div class="estimate_line"> <!-- estimate-line-->
           <span class="estimate">Estimate: <%= number_to_currency(@project.estimate) %></span>
@@ -26,9 +26,7 @@
            <%= submit_tag 'Make Pledge', class: "btn btn-default btn-danger" %>
            <% end %>
          </div> <!-- estimate-line -->
-         </div> <!-- media-body -->
-
-        <div class="pull-right">
+           <div class="pull-right">
           <%= link_to like_project_path(@project, like: true), method: :post do %>
             <i class="glyphicon glyphicon-thumbs-up"></i>&nbsp <%= @project.thumbs_up_total %>
           <% end %>&nbsp&nbsp&nbsp&nbsp
@@ -36,10 +34,23 @@
            <i class="glyphicon glyphicon-thumbs-down"></i>&nbsp <%= @project.thumbs_down_total %>
           <% end %>
         </div>
+         </div> <!-- media-body -->
+
 
        </div> <!--media-->
+      </div> <!--wells-->
     </div> <!--entry-->
-  
+<hr/>
+
+    <div class="container">
+      <div class="row">
+      <div class="col-md-1">  
+   </div>
+       <div class="col-md-10">
+      <%= image_tag(@project.picture.url) if @project.picture? %>
+     </div>
+  </div>
+ </div>
 
  <h5><%= link_to "Return to Projects listing", projects_path, class: "btn btn-warning btn-small" %></h5>
 

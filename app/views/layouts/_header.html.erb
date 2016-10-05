@@ -12,7 +12,7 @@
 <% if user_signed_in? %>
 <ul class="nav_item">
  <li class="dropdown">
-  <%= link_to '#', class: "btn btn-default btn-xs btn-danger dropdown-toggle", "data-toggle" => "dropdown" do %>
+  <%= link_to '#', class: "btn btn-default  btn-danger dropdown-toggle", "data-toggle" => "dropdown" do %>
    <%= current_user.name %> <b class="caret"></b>
  <% end %>
 
@@ -39,6 +39,24 @@
  </ul>
 <% end %>
 
+
+
+<div class="nav_item pull-right">
+    
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+   Your Pledges
+    <span class="caret"></span>
+  </button>
+<ul class="dropdown-menu">
+<li class="carts">
+ <% if @cart %>
+ <%= hidden_div_if(@cart.pledges.empty?, id: 'cart') do %>
+ <%= render @cart %>
+ <% end %>
+ <% end %>
+</li>`
+</ul>
+</div>
 
 </div>
 </header>

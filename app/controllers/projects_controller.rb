@@ -1,4 +1,7 @@
 class ProjectsController < ApplicationController
+  include CurrentCart
+  before_action :set_cart
+  
   before_action :set_project, only: [:show, :edit, :update, :destroy, :like]
   before_action :require_user, except: [:show, :index]
   before_action :require_same_user, only: [:edit, :update]
@@ -9,7 +12,8 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all.sort_by{|likes| likes.thumbs_up_total}
+    #@projects = Project.all.sort_by{|likes| likes.thumbs_up_total}
+     @projects = Project.paginate(page: params[:page], per_page: 2)
   end
 
   # GET /projects/1
@@ -107,6 +111,6 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:title, :description, :image_url, :estimate)
+      params.require(:project).permit(:title, :description, :image_url, :estimate, :picture)
     end
 end
