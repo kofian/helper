@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161005100131) do
+ActiveRecord::Schema.define(version: 20161016111850) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,13 @@ ActiveRecord::Schema.define(version: 20161005100131) do
     t.string   "pay_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "likes", force: :cascade do |t|
@@ -57,12 +64,24 @@ ActiveRecord::Schema.define(version: 20161005100131) do
   create_table "projects", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
-    t.string   "image_url"
-    t.decimal  "estimate",    precision: 8, scale: 2
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.decimal  "estimate",      precision: 8, scale: 2
+    t.datetime "created_at",                                            null: false
+    t.datetime "updated_at",                                            null: false
     t.integer  "user_id"
     t.string   "picture"
+    t.string   "slug"
+    t.string   "contact_email"
+    t.string   "state"
+    t.string   "url"
+    t.text     "review_tags"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.text     "custom_fields"
+    t.boolean  "archived",                              default: false
+    t.datetime "opens_at"
+    t.datetime "closes_at"
+    t.boolean  "featured",                              default: false
+    t.boolean  "watch",                                 default: false
   end
 
   add_index "projects", ["user_id"], name: "index_projects_on_user_id", using: :btree

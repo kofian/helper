@@ -1,0 +1,43 @@
+<div class="project">
+  <div class="row">
+    <header>
+      <div class="col-sm-3">
+        <h2><%= @project.title %></h2>
+          <div class="col-sm-5 col-sm-offset-4">
+            <div id="project-actions-top", class="pull-right">
+              <%= link_to "Edit Project", edit_admin_project_path, class: "btn btn-primary" %>
+            </div>
+          </div>
+        </div>
+   <div class="row">
+     <div class="col-sm-4">
+       <h4>Event Details</h4>
+         <dl class="dl-horizontal">
+          <dt>Url:</dt>
+           <dd><a><%= link_to @project.url, url: @project.url %></a> </dd>
+           <dt>Slug:</dt>
+            <dd><%= @project.slug %></dd>
+           <dt>Email:</dt>
+            <dd><%= @project.contact_email %></dd>
+           <dt>Rating count:</dt>
+            <dd><%= rating_counts %></dd>
+         </dl>
+         <dl class="dl-horizontal">
+          <dt>Fundraising Opens:</dt>
+           <dd><a><%= @project.donation_opens %></a> </dd>
+           <dt>Fundraising Closes:</dt>
+            <dd><%= @project.donation_closes %></dd>
+           <div class="subset">
+           <dt>Days Remaining:</dt>
+            <dd>{@project.donation_days_remaining}</dd>
+          </div>
+          <dt>Project Star:</dt>
+           <dd><a><%= @project.start_date.to_s(:month_day_year) unless @project.start_date.blank? %></a> </dd>
+           <dt>Project End:</dt>
+            <dd><%= @project.end_date.to_s(:month_day_year) unless @project.end_date.blank? %></dd>
+         </dl>
+      </div>
+   </div> 
+
+</div>
+</div>

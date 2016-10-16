@@ -39,7 +39,7 @@ class ProjectsController < ApplicationController
   # POST /projects.json
   def create
     @project = Project.new(project_params)
-
+    @project.user = current_user
     respond_to do |format|
       if @project.save
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
@@ -53,27 +53,27 @@ class ProjectsController < ApplicationController
 
   # PATCH/PUT /projects/1
   # PATCH/PUT /projects/1.json
-  def update
-    respond_to do |format|
-      if @project.update(project_params)
-        format.html { redirect_to @project, notice: 'Project was successfully updated.' }
-        format.json { render :show, status: :ok, location: @project }
-      else
-        format.html { render :edit }
-        format.json { render json: @project.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  #def update
+   # respond_to do |format|
+    #  if @project.update(project_params)
+     #   format.html { redirect_to @project, notice: 'Project was successfully updated.' }
+      #  format.json { render :show, status: :ok, location: @project }
+      #else
+       # format.html { render :edit }
+        #format.json { render json: @project.errors, status: :unprocessable_entity }
+      #end
+    #end
+  #end
 
   # DELETE /projects/1
   # DELETE /projects/1.json
-  def destroy
-    @project.destroy
-    respond_to do |format|
-      format.html { redirect_to projects_url, notice: 'Project was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
+  #def destroy
+   # @project.destroy
+    #respond_to do |format|
+     # format.html { redirect_to projects_url, notice: 'Project was successfully destroyed.' }
+      #format.json { head :no_content }
+    #end
+  #end
 
   def who_donated
    @project = Project.find(params[:id])
@@ -100,7 +100,8 @@ class ProjectsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_project
-      @project = Project.find(params[:id])
+      #@project = Project.find(params[:id])
+      @project = Project.find_by!(slug: params[:slug])
     end
     def require_same_user
       if current_user != @project.user and !current_user.admin?
@@ -110,7 +111,7 @@ class ProjectsController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def project_params
-      params.require(:project).permit(:title, :description, :image_url, :estimate, :picture)
-    end
+    #def project_params
+     # params.require(:project).permit(:title, :description, :contact_email, :estimate, :picture, :user, :slug, :url, :start_date, :end_date, :closes_at, :opens_at, :custom_fields, :review_tags, :state)
+    #end
 end

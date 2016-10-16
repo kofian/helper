@@ -7,14 +7,14 @@
      <div class="container"> <!--entry removed entry class-->
       <div class="media well well-lg entry"> <!--media-->
         <div class="media-left"><!--media-left-->
-         <%= image_tag(@projects.first.image_url) %>
+         <%= image_tag(@top_priority.first.picture_url, size: "150x150", class: "media_image") %>
         </div> <!--media-left-->
         <div class="media-body"> <!--media-body-->
-         <h1> <%= @projects.first.title %> </h1>
-         <%= sanitize(@projects.first.description) %>
+         <h1> <%= @top_priority.first.title %> </h1>
+         <%= sanitize(@top_priority.first.description) %>
          <div class="estimate_line"> <!-- estimate-line-->
-          <span class="estimate">Estimate: <%= number_to_currency(@projects.first.estimate) %></span>
-           <%= form_tag pledges_path(project_id: @projects.first), method: "post", remote: true do %>
+          <span class="estimate">Estimate: <%= number_to_currency(@top_priority.first.estimate) %></span>
+           <%= form_tag pledges_path(project_id: @top_priority.first.id), method: "post", remote: true do %>
            <%= text_field_tag 'amount',nil,placeholder:'0.00', id: 'new-todo' %>
            <%= submit_tag 'Make Pledge' %>
            <% end %>
@@ -38,17 +38,17 @@
 <div class="row">
  <div class="col-lg-4 col-md-4 panel panel-default entry">
    <div class="panel-heading">
-   <h3><%= @projects.first.title %></h3>
+   <h3><%= @watching.first.title %></h3>
    </div>
    <div class="panel-body">
    <h3 class="midrow">
     View Charity Project and pledge
    </h3>
-   <p> <%= truncate(strip_tags(@projects.first.description), length: 180) %> </p>
+   <p> <%= truncate(strip_tags(@watching.first.description), length: 180) %> </p>
    <h2 class="left">Make a pledge here and now</h2>
     <div class="estimate_line">
-   <span class="estimate">Estimate: <%= number_to_currency(@projects.first.estimate) %></span>
-   <%= form_tag pledges_path(project_id: @projects.first), method: "post", remote: true do %>
+   <span class="estimate">Estimate: <%= number_to_currency(@watching.first.estimate) %></span>
+   <%= form_tag pledges_path(project_id: @watching.first.id), method: "post", remote: true do %>
    <%= text_field_tag 'amount',nil,placeholder:'0.00', id: 'new-todo' %>
    <%= submit_tag 'Make Pledge' %>
    <% end %>
@@ -60,17 +60,17 @@
  
  <div class="col-lg-4 col-md-4 panel panel-success entry">
   <div class="panel-heading">
-   <h3><%= @projects.second.title %></h3>
+   <h3><%= @watching.second.title %></h3>
    </div>
    <div class="panel-body">
    <h3 class="midrow">
     View Charity Project and pledge
    </h3>
-    <p><%= truncate(strip_tags(@projects.second.description), length: 180) %></p>
+    <p><%= truncate(strip_tags(@watching.second.description), length: 180) %></p>
    <h2 class="left">Make a pledge here and now</h2>
     <div class="estimate_line">
-   <span class="estimate">Estimate: <%= number_to_currency(@projects.second.estimate) %></span>
-   <%= form_tag pledges_path(project_id: @projects.second), method: "post", remote: true do %>
+   <span class="estimate">Estimate: <%= number_to_currency(@watching.second.estimate) %></span>
+   <%= form_tag pledges_path(project_id: @watching.second.id), method: "post", remote: true do %>
    <%= text_field_tag 'amount',nil,placeholder:'0.00', id: 'new-todo' %>
    <%= submit_tag 'Make Pledge' %>
    <% end %>
@@ -81,17 +81,17 @@
 
  <div class="col-lg-4 col-md-4 panel panel-info entry">
    <div class="panel-heading">
-   <h3><%= @projects.third.title %></h3>
+   <h3><%= @watching.third.title %></h3>
    </div>
    <div class="panel-body">
    <h3 class="midrow">
     View Charity Project and pledge
    </h3>
-  <p> <%= truncate(strip_tags(@projects.third.description), length: 180) %></p>
+  <p> <%= truncate(strip_tags(@watching.third.description), length: 180) %></p>
    <h2 class="left">Make a pledge here and now</h2>
     <div class="estimate_line">
-   <span class="estimate">Estimate: <%= number_to_currency(@projects.third.estimate) %></span>
-   <%= form_tag pledges_path(project_id: @projects.third), method: "post", remote: true do %>
+   <span class="estimate">Estimate: <%= number_to_currency(@watching.third.estimate) %></span>
+   <%= form_tag pledges_path(project_id: @watching.third.id), method: "post", remote: true do %>
    <%= text_field_tag 'amount',nil,placeholder:'0.00', id: 'new-todo' %>
    <%= submit_tag 'Make Pledge' %>
    <% end %>

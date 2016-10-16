@@ -2,21 +2,54 @@
 
   <div class="row projects">
    <div class="well col-md-8 col-md-offset-2">    
-     <%= form_for(@project, html: {muultipart: true}) do |f| %>
+     <%= form_for(@project, html: {multipart: true}) do |f| %>
+  
+   <div class="form-group">
     <%= f.label :title %>
-    <%= f.text_field :title %>
-  
-  
+    <%= f.text_field :title, class: 'form-control', placeholder: 'Title of the project' %>
+   </div>  
+
+    <div class="form-group">
     <%= f.label :description %>
-    <%= f.text_area :description, rows: 10 %>
-  
-  
+    <%= f.text_area :description, class: 'form-control', placeholder: 'Description of the project', rows: 10 %>
+    </div>  
+     <div class="form-group">
+     <%= f.label :contact_email %>
+     <%= f.email_field :contact_email, class: 'form-control', placeholder: 'Project\'s Email' %>
+     </div>
+
+   <div class="form-group">
     <%= f.label :estimate %>
-    <%= f.text_field :estimate %>
+    <%= f.text_field :estimate, class: 'form-control', placeholder: 'The project estimate' %>
+    </div>
+
+   <div class="form-group">
+     <%= f.label :slug %>
+     <%= f.text_field :slug, class: 'form-control', placeholder: 'Slug for the event URL, maybe left blank' %>
+ <p class="help-block">The slug will be used in public facing URLs. If you leave this blank, a slug will be generated based on the title.</p>
+  </div>
+   <div class="form-group">
+     <%= f.label :url %>
+     <%= f.text_field :url, class: 'form-control', placeholder: 'Event\'s URL' %>
+  </div>
   
+   <div class="form-group">
     <span class="picture">
      <%= f.file_field :picture, accept: 'image/jpeg, image/gif, image/png' %>
     </span>
+  </div>
+
+   <div class="form-group">
+     <%= f.label :start_date %>
+     <%= f.object.start_date.to_s(:month_day_year) unless f.object.start_date.blank? %>
+     <%= f.text_field :start_date, value: (f.object.start_date.blank? ? "" : f.object.start_date.to_s(:month_day_year) )  %>
+  </div>
+   <div class="form-group">
+     <%= f.label :end_date %>
+     <%= f.object.end_date.to_s(:month_day_year) unless f.object.end_date.blank? %>
+     <%= f.text_field :end_date, value: (f.object.end_date.blank? ? "" : f.object.end_date.to_s(:month_day_year) )  %>
+    <p class="help-block">Open Fundraiser end date is optional. If you do not provide one the Fundraiser will defer to its state.</p>
+  </div>
 
     <%= f.submit(@project.new_record? ? 'Create Project' : 'Edit Project', class: "btn btn-success") %>
   

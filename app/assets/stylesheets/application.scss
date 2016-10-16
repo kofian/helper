@@ -6,10 +6,13 @@ $navbar-default-color: $light-orange;
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import 'bootstrap-datetimepicker';
+
 @import "base";
 @import "carts";
 @import"charity";
 @import "projects";
+@import "user";
 
 
 

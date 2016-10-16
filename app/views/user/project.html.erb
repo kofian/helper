@@ -1,0 +1,44 @@
+
+<h3 class="center">Projects you proposed</h3>
+<hr/>
+
+<div class="row col-md-12 pull-right">
+<% @project.each do |project| %>
+
+  <div class="entry"> <!--entry-->
+
+   <%# if user_signed_in? and project.user == current_user %>
+    <%#= link_to "Edit Project", edit_project_path,  class: "btn btn-lg btn-success" %>
+  <%# end %>
+
+    <div class="wells wells-default"> <!--wells-->
+      <h2><%= project.title %></h2>
+        <p> <%= sanitize(project.description) %></p>
+         <div class="estimate_line"> <!-- estimate-line-->
+          <span class="estimate">Estimate: <%= number_to_currency(project.estimate) %></span>
+           <%= form_tag pledges_path(project_id: project), method: "post", remote: true do %>
+           <%= text_field_tag 'amount',nil,placeholder:'0.00', id: 'new-todo' %>
+           <%= submit_tag 'Make Pledge', class: "btn btn-default btn-danger" %>
+           <% end %>
+         </div> <!-- estimate-line -->
+           <div class="pull-right">
+          <%= link_to like_project_path(project, like: true), method: :post do %>
+            <i class="glyphicon glyphicon-thumbs-up"></i>&nbsp <%= project.thumbs_up_total %>
+<% end %>&nbsp&nbsp&nbsp&nbsp
+          <%= link_to like_project_path(project, like: false), method: :post do %>
+           <i class="glyphicon glyphicon-thumbs-down"></i>&nbsp <%= project.thumbs_down_total %>
+          <% end %>
+        </div>
+
+
+      </div> <!--wells-->
+    </div> <!--entry-->
+<hr/>
+
+       <div class="well well-default">
+      <%= image_tag(project.picture.url) if project.picture? %>
+     </div>
+
+<% end %> <br/>
+</div>
+<hr/>

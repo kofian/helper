@@ -1,9 +1,11 @@
 source 'https://rubygems.org'
 
-ruby '2.2.3'
+#ruby '2.2.3'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sass-rails', '>= 3.2'
 gem 'react-rails'
+#gem 'flux-rails-assets'
+#gem 'react-router-rails','~>0.13.3.2'
 gem 'devise'
 gem 'omniauth-facebook'
 gem 'nokogiri', '~> 1.6', '>= 1.6.8'
@@ -11,6 +13,9 @@ gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'fog-aws'
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.42'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
 # Use sqlite3 as the database for Active Record
@@ -40,8 +45,12 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-  gem 'pg'
-  gem 'rails_12factor'
+gem 'pg'
+gem 'responders'
+
+group :production do
+ gem 'rails_12factor'
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -1,0 +1,9 @@
+<%= render 'user/greeting' %>
+<hr/>
+<div class="well well-default">
+<% @pledge.each do |pledge| %>
+ You pledged <%= number_to_currency(pledge.amount) %> to <%= link_to pledge.project.title, project_path(pledge) %>  <%= distance_of_time_in_words_to_now pledge.created_at%> ago <% unless pledge.cart_id.nil? %><%= button_to "Make Donation", new_donation_path, method: :get %> <% end %><br/>
+<hr/>
+<% end %>
+</div>
+

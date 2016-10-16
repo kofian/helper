@@ -1,0 +1,10 @@
+<%= render 'user/greeting' %>
+<% @pledge.each do |user| %>
+
+<%if user.donation %> You made donation with <%=user.donation.pay_type %> <h3>on  <%= user.donation.created_at.strftime("%d/%b/%Y %I:%M %p") %></h3> of <%= number_to_currency(user.amount) %> to the benefit of <%= user.project.title %>
+<% end %>
+
+<br/>
+<hr/>
+    
+<% end %>

@@ -1,0 +1,15 @@
+// Place all the styles related to the User controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.user-sidebar {
+   background-color: #eee;
+   box-shadow: 1px 0 3px #888888;
+   height: 100%;
+    .btn-group-vertical {
+      width: 100%;
+     .btn {
+       width: 800%;
+      }
+    }
+}

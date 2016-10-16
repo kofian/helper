@@ -1,7 +1,9 @@
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
+   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+   #protect_from_forgery with: :null_session
+
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
@@ -28,11 +30,10 @@ class ApplicationController < ActionController::Base
     end
    end
 
-  def authorize_user
-    unless current_user
-    redirect_to new_user_session_path
+    def project_params
+      params.require(:project).permit(:title, :description, :contact_email, :estimate, :picture, :user, :slug, :url, :start_date, :end_date, :closes_at, :opens_at, :custom_fields, :review_tags, :state)
     end
-  end
+
 
     def invalid_path
       logger.error "Attempt to access invalid path #{params[:id]}"

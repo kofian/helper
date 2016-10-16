@@ -1,0 +1,16 @@
+It's <%= Time.now %>
+
+<div class="btn-group-vertical" role="group" aria-label="...">
+ <%= link_to "Your Pledges", profile_path(id: current_user.id), class: "btn btn-default" %>
+ <%= link_to "Your Projects", user_project_path(id: current_user.id), class: "btn btn-default" %>
+ <%= link_to "Donation History", user_donation_path(id: current_user.id), class: "btn btn-default" %>
+ <%= link_to 'Edit Profile', edit_user_registration_path, class: "btn btn-default" %> 
+ <button type="button" class="btn btn-default btn-warning">News World</button>
+  <button type="button" class="btn btn-default btn-warning">Events</button>
+</div>
+
+<div class="pull-right">
+   <% if user_signed_in? %>
+    <%= link_to "Create Project Proposal", new_project_path,  class: "btn btn-xs btn-success" %>
+  <% end %>
+</div><br/>I

@@ -3,10 +3,13 @@ class DonationsController < ApplicationController
    include CurrentCart
 
    before_action :set_user_cart, only: [:new, :create]
-
    before_action :set_donation, only: [:show, :edit, :update, :destroy]
+   before_action :require_user, except: [:show]   
+   #before_action :require_same_user, except: [:show]
+   before_action :require_admin_user, only: [:destroy]   
    rescue_from ActiveRecord::RecordNotFound, with: :invalid_path
-   before_action :authorize_user, only: [:new, :create]
+
+
 
   # GET /donations
   # GET /donations.json
@@ -85,4 +88,11 @@ class DonationsController < ApplicationController
     def donation_params
       params.require(:donation).permit(:name, :address, :email, :pay_type)
     end
+     #To be implemented
+    def require_same_user
+      if current_user != @donation.user and !current_user.admin?
+       flash[:danger] = "You can only honor your pledge only"
+       redirect_to charity_path
+     end
+   end
 end

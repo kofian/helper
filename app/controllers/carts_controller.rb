@@ -1,7 +1,8 @@
 class CartsController < ApplicationController
   before_action :set_cart, only: [:show, :edit, :update, :destroy]
+  before_action :require_user
+  before_action :require_admin_user, except: [:show,:create,:new,:destroy]
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
-  before_action :authorize_user
 
 
   # GET /carts

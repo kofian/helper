@@ -5,7 +5,7 @@
    <%= render 'shared/page_title', title: @project.title %>  
   </div>
   <div class="col-md-2">
-   <% if user_signed_in? %>
+   <% if user_signed_in? and @project.user == current_user %>
     <%= link_to "Edit Project", edit_project_path,  class: "btn btn-lg btn-success" %>
    <% end %>
   </div>
@@ -21,7 +21,7 @@
          <%= sanitize(@project.description) %>
          <div class="estimate_line"> <!-- estimate-line-->
           <span class="estimate">Estimate: <%= number_to_currency(@project.estimate) %></span>
-           <%= form_tag pledges_path(project_id: @project), method: "post", remote: true do %>
+           <%= form_tag pledges_path(project_id: @project.id), method: "post", remote: true do %>
            <%= text_field_tag 'amount',nil,placeholder:'0.00', id: 'new-todo' %>
            <%= submit_tag 'Make Pledge', class: "btn btn-default btn-danger" %>
            <% end %>
@@ -44,10 +44,10 @@
 
     <div class="container">
       <div class="row">
-      <div class="col-md-1">  
+      <div class="col-md-2">  
    </div>
-       <div class="col-md-10">
-      <%= image_tag(@project.picture.url) if @project.picture? %>
+       <div class="col-md-9">
+      <%= image_tag(@project.picture.url, size: "350x350", class: "media_image") if @project.picture? %>
      </div>
   </div>
  </div>

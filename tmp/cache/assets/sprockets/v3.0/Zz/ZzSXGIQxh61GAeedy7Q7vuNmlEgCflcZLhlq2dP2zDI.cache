@@ -1,9 +1,0 @@
-I"Ï(function() {
-  $(document).on("ready page:change", function() {
-    return $('.charity .entry > img').click(function() {
-      return $(this).parent().find(':submit').click();
-    });
-  });
-
-}).call(this);
-:ET

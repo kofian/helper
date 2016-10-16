@@ -3,18 +3,41 @@ Rails.application.routes.draw do
   resources :donations
   resources :pledges
   resources :carts
+  resources :notes
   get 'charity/index'
 
-  get 'user' => 'user#index'
+  get 'user/:id/profile' => 'user#profile', as: :profile
+  get 'user/:id/project' => 'user#project', as: :user_project
+  get 'user/:id/donation' => 'user#donation', as: :user_donation
+  #get 'user' => 'user#index'
 
-  resources :projects do
-    get :who_donated, on: :member
-  end
-  
-  resources :projects do
+ # resources :projects do
+   # get :who_donated, on: :member
+ # end
+  resources :projects, param: :slug do
     member do
      post 'like'
+     get 'who_donated'
     end
+  end
+
+    namespace :api do
+      namespace :v1 do
+        resources :items, only: [:index, :create, :destroy, :update]
+      end
+    end
+
+  namespace :admin do
+   resources :users, except: [:new, :create]
+   resources :projects, param: :slug, except: [:new, :create]
+   resources :projects, only: [:archive, :unarchive] do
+    post :archive
+    post :unarchive
+    post :faeture
+    post :unfaeture
+    post :watched
+    post :unwatched
+  end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

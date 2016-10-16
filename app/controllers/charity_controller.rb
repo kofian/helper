@@ -4,6 +4,8 @@ class CharityController < ApplicationController
 
 
   def index
-   @projects = Project.order(:title)
+   @top_priority = Project.top_featured
+   @watching = Project.top_watched
+   #@projects = Project.order(:title)
   end
 end

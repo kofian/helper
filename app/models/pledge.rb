@@ -4,6 +4,8 @@ class Pledge < ActiveRecord::Base
   belongs_to :project
   belongs_to :cart
   validates :amount, :user_id, presence: true
+
+    scope :recent, -> { order('created_at DESC') }
     
     def total_amount
      self.amount += cart.amount.to_i
