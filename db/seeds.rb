@@ -12,7 +12,7 @@ User.delete_all
 # . . 
 User.create!(:first_name => 'Sonia', :last_name => 'Watson', 
 :email => 'dommesonia@gmail.com', 
-:password => 'Ezebo1', :password_confirmation => 'Ezebo1', 
+:password => 'hacker', :password_confirmation => 'hacker', 
 :admin => true, :featured => true)
 
 # . . .
