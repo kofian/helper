@@ -5,6 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+# . . .
+
+User.delete_all
+# . . 
 User.create!(:first_name => 'Sonia', :last_name => 'Watson', 
 :email => 'dommesonia@gmail.com', 
 :password => 'Ezebo1', :password_confirmation => 'Ezebo1', 
@@ -46,7 +51,6 @@ description:
 %{<p>
 Can we help grant the last wish of Shakur. He is on the stage 4 cancer battle, though he is a warrior, but win some lose some. He will be leaving us soon but we can help make his last wish of climbing mountain everest a reality.
 </p>},
-image_url: 'everest.jpg',
 estimate: 90000.95, user_id: 1, picture: "8721_gal.jpg", 
 slug: 'cancer-kid', contact_email: 'canckid@yum.dom', state: 'open', 
 url: "", review_tags: nil, 
@@ -60,7 +64,6 @@ description:
  %{<p>
  This infant was born with HIV, the doctors said she has hope. She can be cured though her mother won't be with her for much longer but she have a chance of having a fulfilled life if we can help make that happen. Just a minor operation will save her and then we can hope to find a loving home for her.
  </p>},
-image_url: 'jules.jpg',
 estimate: 53672.95, user_id: 1, picture: '126036345__plixid.com_.jpg', 
 slug: 'jules-with-hiv', contact_email: 'jules-with-hiv@aol.com', state: 'open', 
 url: "", review_tags: nil, 
