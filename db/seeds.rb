@@ -5,7 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+User.create!(:name => 'Sonia Watson', 
+:email => 'dommesonia@gmail.com', 
+:password => 'Ezebo1', :password_confirmation => 'Ezebo1', 
+:admin => true, :featured => true)
 
+# . . .
 
 Project.delete_all
 # . . .
