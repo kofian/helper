@@ -47,8 +47,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 gem 'pg'
 gem 'responders'
+gem 'puma'
 
 group :production do
+ ruby '2.2.3'
  gem 'rails_12factor'
 end
 
