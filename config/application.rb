@@ -24,11 +24,11 @@ module Helpinghand
     config.active_record.raise_in_transactional_callbacks = true
 
      #To be able to pick up social_keys.yml which should be gitignored
-    social_keys = File.join(Rails.root, 'config', 'social_keys.yml')
-    CONFIG = HashWithIndifferentAccess.new(YAML::load(IO.read(social_keys)))[Rails.env]
-    CONFIG.each do |k,v|
-      ENV[k.upcase] ||= v
-    end
+    #social_keys = File.join(Rails.root, 'config', 'social_keys.yml')
+    #CONFIG = HashWithIndifferentAccess.new(YAML::load(IO.read(social_keys)))[Rails.env]
+    #CONFIG.each do |k,v|
+     # ENV[k.upcase] ||= v
+    #end
 
   end
 end
