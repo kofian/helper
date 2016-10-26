@@ -1,9 +1,29 @@
-<%= content_tag "div", h(flash[:danger]),
+<%#= content_tag "div", h(flash[:danger]),
 :class => "danger", :id => "danger" if flash[:danger] %>
-<%= content_tag "div", h(flash[:notice]),
+<%#= content_tag "div", h(flash[:notice]),
 :class => "notice", :id => "notice" if flash[:notice] %>
-<%= content_tag "div", h(flash[:success]),
+<%#= content_tag "div", h(flash[:success]),
 :class => "success", :id => "success" if flash[:success] %>
-<%= content_tag "div", h(flash[:alert]),
+<%#= content_tag "div", h(flash[:alert]),
 :class => "alert", :id => "alert" if flash[:alert] %>
 
+<% if notice.present? %>
+ <aside class="alert alert-info">
+  <%= notice %>
+ </aside>
+<% end %>
+<% if alert.present? %>
+ <aside class="alert alert-danger">
+  <%= alert %>
+ </aside>
+<% end %>
+<% if flash[:success].present? %>
+ <aside class="alert alert-success">
+  <%= flash[:success] %>
+ </aside>
+<% end %>
+<% if flash[:danger].present? %>
+ <aside class="alert alert-danger">
+  <%= flash[:danger] %>
+ </aside>
+<% end %>

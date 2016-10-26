@@ -1,15 +1,17 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
   resources :donations
   resources :pledges
   resources :carts
   resources :notes
   get 'charity/index'
 
+  #resources :user, only: [:show, :edit, :update]
   get 'user/:id/profile' => 'user#profile', as: :profile
   get 'user/:id/project' => 'user#project', as: :user_project
   get 'user/:id/donation' => 'user#donation', as: :user_donation
   #get 'user' => 'user#index'
+
 
  # resources :projects do
    # get :who_donated, on: :member

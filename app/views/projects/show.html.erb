@@ -21,11 +21,17 @@
          <%= sanitize(@project.description) %>
          <div class="estimate_line"> <!-- estimate-line-->
           <span class="estimate">Estimate: <%= number_to_currency(@project.estimate) %></span>
-           <%= form_tag pledges_path(project_id: @project.id), method: "post", remote: true do %>
-           <%= text_field_tag 'amount',nil,placeholder:'0.00', id: 'new-todo' %>
-           <%= submit_tag 'Make Pledge', class: "btn btn-default btn-danger" %>
-           <% end %>
          </div> <!-- estimate-line -->
+  <section class="search-form">
+           <%= form_tag pledges_path(project_id: @project.id), method: "post", remote: true do %>
+            <div class="input-group input-group-lg"> <!-- input-group-->
+           <%= text_field_tag :amount, nil, placeholder:'0.00', id: 'new-todo', class: "form-control input-lg" %>
+       <span class="input-group-btn">
+           <%= submit_tag 'Make Pledge', class: "btn btn-danger btn-lg" %>
+       </span>
+       </div><!--input-group-->
+           <% end %>
+         </section>
            <div class="pull-right">
           <%= link_to like_project_path(@project, like: true), method: :post do %>
             <i class="glyphicon glyphicon-thumbs-up"></i>&nbsp <%= @project.thumbs_up_total %>
