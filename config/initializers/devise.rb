@@ -254,7 +254,7 @@ Devise.setup do |config|
   require 'devise/orm/active_record'
 
   #config.sign_out_via = :get
-  config.omniauth :facebook, :facebook_key => ENV["FACEBOOK_KEY"], :facebook_secret => ENV["FACEBOOK_SECRET"], { :scope => 'email', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
+  config.omniauth :facebook, ENV["FACEBOOK_KEY"], ENV["FACEBOOK_SECRET"], { :scope => 'email', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
