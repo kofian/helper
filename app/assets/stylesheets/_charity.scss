@@ -25,27 +25,32 @@
      max-height: 250px;
    }
  }
+@media (min-width: 768px) {
 
-.jumbotron {
-   padding: 20px;
-  p {
+  .container .jumbotron, .container-fluid .jumbotron {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+     p {
    font-size: 16px;
    text-align: justify;
-  }
- h1 {
-  font-size: 30px;
-  color: #000;
-  font-weight: 500px;
- }
- .estimate {
- color: #44a;
- font-weight: bold;
- margin-right: 3em;
- }
- .media {
-    border: 30px solid;
-    border-color: #d6e9c6;
-  }
+   }
+     h1 {
+      font-size: 30px;
+      color: #000;
+      font-weight: 500px;
+     }
+    .estimate {
+      color: #44a;
+      font-weight: bold;
+      margin-right: 3em;
+     }
+    .media {
+       border: 30px solid;
+       border-color: #d6e9c6;
+     }
+   }
+
 }
 .sesfield {
   input {
@@ -56,12 +61,22 @@
 /* Mobile */
 @media (max-width: 767px) {
 
-  .duches {
-   margin-top: 25px;
+ .main1{
+   margin-top: 80px;
  }
 
- .jumbotron {
- 
+  .duches {
+   margin-top: 55px;
+ }
+
+ .container .jumbotron, .container-fluid .jumbotron {
+   padding-left: 5px;
+   padding-right: 5px;
+   .media {
+    border: 3px solid;
+    border-color: #d6e9c6;
+  } 
+
   .media-body {
     width: 100%;
     float: left;
