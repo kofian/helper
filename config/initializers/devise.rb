@@ -254,7 +254,7 @@ Devise.setup do |config|
   require 'devise/orm/active_record'
 
   #config.sign_out_via = :get
-  config.omniauth :facebook, "<%= Figaro.env.FACEBOOK_KEY %>" , "<%= Figaro.env.FACEBOOK_SECRET %>", { :scope => 'email', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
+  config.omniauth :facebook, Figaro.env.FACEBOOK_KEY , Figaro.env.FACEBOOK_SECRET, { :scope => 'email', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

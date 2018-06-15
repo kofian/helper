@@ -127,7 +127,7 @@ class Project < ActiveRecord::Base
     end
   end
   def unwatched
-    if watched?
+    if watch?
       update_attribute(:watch, false)
     end
   end
